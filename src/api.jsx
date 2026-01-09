@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5213/api";
+const API_URL = "https://projectmeet-backend.onrender.com/api";
 
 export async function register(data) {
   const res = await fetch(`${API_URL}/Auth/register`, {
