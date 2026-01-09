@@ -9,7 +9,8 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      {window.location.pathname !== "/" &&
+        window.location.pathname !== "/register" && <Navbar />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
