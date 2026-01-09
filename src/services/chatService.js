@@ -4,7 +4,7 @@ let connection = null;
 
 export function connectChat(meetingId, token, handlers) {
   connection = new signalR.HubConnectionBuilder()
-    .withUrl("http://localhost:5213/chatHub", {
+    .withUrl("https://projectmeet-backend.onrender.com/chatHub", {
       accessTokenFactory: () => token,
     })
     .withAutomaticReconnect()

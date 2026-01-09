@@ -45,7 +45,9 @@ function Chat() {
     }
 
     const connection = new HubConnectionBuilder()
-      .withUrl(`http://localhost:5213/chatHub?access_token=${token}`)
+      .withUrl(
+        `https://projectmeet-backend.onrender.com/chatHub?access_token=${token}`
+      )
       .withAutomaticReconnect()
       .build();
 
