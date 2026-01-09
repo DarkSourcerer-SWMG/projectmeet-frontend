@@ -16,7 +16,11 @@ export default function MeetingCard({ meeting }) {
       await deleteMeeting(meeting.id);
       window.location.reload();
     } catch (e) {
-      alert("Nie udało się usunąć spotkania");
+      if (e.message && e.message.includes("404")) {
+        alert("Spotkanie nie istnieje lub zostało już usunięte.");
+      } else {
+        alert("Nie udało się usunąć spotkania");
+      }
     }
     setDeleting(false);
   };
