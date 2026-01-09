@@ -3,7 +3,7 @@ import { useState } from "react";
 import AddParticipantModal from "./AddParticipantModal";
 import { deleteMeeting } from "../api";
 
-export default function MeetingCard({ meeting }) {
+export default function MeetingCard({ meeting, onDeleted }) {
   const navigate = useNavigate();
   const [showAdd, setShowAdd] = useState(false);
 
@@ -14,7 +14,7 @@ export default function MeetingCard({ meeting }) {
     setDeleting(true);
     try {
       await deleteMeeting(meeting.id);
-      window.location.reload();
+      if (onDeleted) onDeleted();
     } catch (e) {
       if (e.message && e.message.includes("404")) {
         alert("Spotkanie nie istnieje lub zostało już usunięte.");

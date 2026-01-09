@@ -55,7 +55,7 @@ export default function Meetings() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {meetings.map((m) => (
-            <MeetingCard key={m.id} meeting={m} />
+            <MeetingCard key={m.id} meeting={m} onDeleted={loadMeetings} />
           ))}
         </div>
       )}
