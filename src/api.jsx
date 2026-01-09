@@ -34,7 +34,7 @@ export async function createMeeting(meeting) {
 
   console.log("CREATE MEETING TOKEN:", token);
 
-  const res = await fetch("http://localhost:5213/api/Meetings", {
+  const res = await fetch(`${API_URL}/Meetings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
