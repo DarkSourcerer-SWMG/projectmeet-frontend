@@ -1,10 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AddParticipantModal from "./AddParticipantModal";
+import { deleteMeeting } from "../api";
 
 export default function MeetingCard({ meeting }) {
   const navigate = useNavigate();
   const [showAdd, setShowAdd] = useState(false);
+
+  const [deleting, setDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    if (!window.confirm("Czy na pewno chcesz usunąć to spotkanie?")) return;
+    setDeleting(true);
+    try {
+      await deleteMeeting(meeting.id);
+      window.location.reload();
+    } catch (e) {
+      alert("Nie udało się usunąć spotkania");
+    }
+    setDeleting(false);
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between">
@@ -37,6 +52,14 @@ export default function MeetingCard({ meeting }) {
           className="flex-1 border border-blue-600 text-blue-600 py-2 rounded-lg hover:bg-blue-50 transition"
         >
           Dodaj uczestnika
+        </button>
+
+        <button
+          onClick={handleDelete}
+          className="flex-1 border border-red-600 text-red-600 py-2 rounded-lg hover:bg-red-50 transition"
+          disabled={deleting}
+        >
+          {deleting ? "Usuwanie..." : "Usuń"}
         </button>
       </div>
 

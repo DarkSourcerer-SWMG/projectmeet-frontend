@@ -1,3 +1,13 @@
+export async function deleteMeeting(meetingId) {
+  const token = localStorage.getItem("token");
+  const res = await fetch(`${API_URL}/Meetings/${meetingId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) throw new Error("Failed to delete meeting");
+}
 const API_URL = "https://projectmeet-backend.onrender.com/api";
 
 export async function register(data) {
