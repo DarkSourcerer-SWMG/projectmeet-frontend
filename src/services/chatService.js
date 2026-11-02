@@ -1,10 +1,11 @@
 import * as signalR from "@microsoft/signalr";
+import { BACKEND_URL } from "../config";
 
 let connection = null;
 
 export function connectChat(meetingId, token, handlers) {
   connection = new signalR.HubConnectionBuilder()
-    .withUrl("https://projectmeet-backend.onrender.com/chatHub", {
+    .withUrl(`${BACKEND_URL}/chatHub`, {
       accessTokenFactory: () => token,
     })
     .withAutomaticReconnect()

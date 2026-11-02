@@ -2,6 +2,7 @@ import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { getMeetings } from "../api";
+import { BACKEND_URL } from "../config";
 
 function Chat() {
   const { meetingid } = useParams();
@@ -46,7 +47,7 @@ function Chat() {
 
     const connection = new HubConnectionBuilder()
       .withUrl(
-        `https://projectmeet-backend.onrender.com/chatHub?access_token=${token}`
+        `${BACKEND_URL}/chatHub?access_token=${token}`
       )
       .withAutomaticReconnect()
       .build();

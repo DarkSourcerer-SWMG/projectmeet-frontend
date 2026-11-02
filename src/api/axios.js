@@ -1,6 +1,7 @@
+import { BACKEND_URL } from "../config";
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://projectmeet-backend.onrender.com/api",
+  baseURL: `${BACKEND_URL}/api`,
   headers: { "Content-Type": "application/json" },
 });
